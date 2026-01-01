@@ -2,649 +2,334 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Divyanshu (Divyan) Dhavale — Portfolio</title>
 
-  <!-- Fonts -->
+  <!-- Clean fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg0:#070A12;
-      --bg1:#0B1020;
+      --bg0:#0b1020;
+      --bg1:#070a12;
       --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.09);
-      --stroke: rgba(255,255,255,.14);
-      --text:#EAF0FF;
-      --muted: rgba(234,240,255,.72);
-      --muted2: rgba(234,240,255,.55);
-      --accent:#7C5CFF;
-      --accent2:#00D1FF;
-      --good:#27E9A1;
-      --shadow: 0 20px 60px rgba(0,0,0,.45);
-      --radius: 18px;
+      --stroke: rgba(255,255,255,.12);
+      --text: #eef2ff;
+      --muted: rgba(238,242,255,.70);
+      --muted2: rgba(238,242,255,.55);
+      /* Sunset + teal */
+      --a:#ff6b6b;   /* coral */
+      --b:#ffb86b;   /* warm amber */
+      --c:#2de2e6;   /* teal */
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
+      --r: 18px;
     }
 
-    *{ box-sizing: border-box; }
+    *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
       margin:0;
-      color:var(--text);
-      background:
-        radial-gradient(800px 500px at 20% 15%, rgba(124,92,255,.35), transparent 55%),
-        radial-gradient(900px 600px at 85% 10%, rgba(0,209,255,.22), transparent 60%),
-        radial-gradient(900px 650px at 30% 90%, rgba(39,233,161,.12), transparent 55%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 550px at 12% 12%, rgba(255,107,107,.20), transparent 60%),
+        radial-gradient(900px 550px at 88% 10%, rgba(45,226,230,.15), transparent 60%),
+        radial-gradient(900px 650px at 30% 95%, rgba(255,184,107,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
       overflow-x:hidden;
     }
-
-    /* Subtle animated grain */
-    body::before{
-      content:"";
-      position:fixed; inset:0;
-      pointer-events:none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
-      mix-blend-mode: overlay;
-      opacity:.35;
-      animation: grain 10s steps(10) infinite;
-    }
-    @keyframes grain{
-      0%{ transform: translate(0,0); }
-      10%{ transform: translate(-10px, 8px); }
-      20%{ transform: translate(-20px, -10px); }
-      30%{ transform: translate(10px, 18px); }
-      40%{ transform: translate(16px, -14px); }
-      50%{ transform: translate(-12px, 10px); }
-      60%{ transform: translate(-22px, 2px); }
-      70%{ transform: translate(18px, 14px); }
-      80%{ transform: translate(6px, -18px); }
-      90%{ transform: translate(-8px, 12px); }
-      100%{ transform: translate(0,0); }
-    }
-
     a{ color:inherit; text-decoration:none; }
-    .wrap{ max-width: 1100px; margin: 0 auto; padding: 28px 18px 70px; }
+    .wrap{ max-width: 1050px; margin: 0 auto; padding: 26px 16px 70px; }
 
-    /* Top nav */
+    /* Nav */
     .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 14px;
-      position:sticky; top:0;
+      position: sticky; top:0; z-index:10;
+      display:flex; justify-content:space-between; align-items:center;
+      padding: 14px 16px;
       backdrop-filter: blur(14px);
-      background: linear-gradient(180deg, rgba(7,10,18,.78), rgba(7,10,18,.35));
+      background: linear-gradient(180deg, rgba(11,16,32,.78), rgba(11,16,32,.35));
       border-bottom: 1px solid rgba(255,255,255,.08);
-      padding: 14px 18px;
-      z-index: 30;
     }
     .brand{
       display:flex; align-items:center; gap:10px;
       font-family: "Space Grotesk", Inter, sans-serif;
       font-weight: 700;
-      letter-spacing: .2px;
+      letter-spacing: -.2px;
     }
     .dot{
-      width: 12px; height:12px; border-radius:999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 18px rgba(124,92,255,.35);
+      width: 12px; height: 12px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--a), var(--c));
+      box-shadow: 0 0 18px rgba(255,107,107,.25);
     }
-    .navlinks{ display:flex; gap: 10px; flex-wrap: wrap; justify-content:flex-end; }
-    .pill{
+    .nav a{
       font-size: 13px;
       padding: 9px 12px;
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
       border-radius: 999px;
       transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      margin-left: 8px;
     }
-    .pill:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.07);
-      border-color: rgba(255,255,255,.18);
-    }
+    .nav a:hover{ transform: translateY(-1px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.18); }
 
-    /* Hero */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 18px;
-      margin-top: 18px;
-      align-items: stretch;
-    }
-    @media (max-width: 900px){ .hero{ grid-template-columns: 1fr; } }
-
+    /* Cards + layout */
     .card{
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, var(--card), rgba(255,255,255,.03));
-      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--r);
+      background: var(--card);
+      border: 1px solid var(--stroke);
       box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
     }
-    .card::after{
+    .hero{
+      margin-top: 18px;
+      padding: 22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::after{
       content:"";
       position:absolute; inset:-2px;
-      background: radial-gradient(420px 220px at 20% 20%, rgba(124,92,255,.18), transparent 60%),
-                  radial-gradient(420px 220px at 80% 20%, rgba(0,209,255,.12), transparent 60%);
-      opacity:.8;
+      background:
+        radial-gradient(520px 240px at 20% 20%, rgba(255,107,107,.18), transparent 60%),
+        radial-gradient(520px 240px at 80% 20%, rgba(45,226,230,.14), transparent 60%);
       pointer-events:none;
     }
-    .heroMain{ padding: 26px; }
-    .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      color: var(--muted);
-      font-size: 13px;
-      letter-spacing: .3px;
-      margin-bottom: 10px;
-    }
-    .spark{
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--good);
-      box-shadow: 0 0 18px rgba(39,233,161,.45);
-    }
-
     h1{
       margin: 0 0 8px;
       font-family: "Space Grotesk", Inter, sans-serif;
-      font-size: clamp(34px, 4.2vw, 56px);
-      line-height: 1.03;
-      letter-spacing: -0.6px;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -0.7px;
     }
-    .subtitle{
+    .sub{
+      margin: 0 0 16px;
       color: var(--muted);
-      font-size: 16px;
       line-height: 1.55;
-      margin: 0 0 18px;
-      max-width: 64ch;
+      max-width: 70ch;
     }
-
-    .ctaRow{ display:flex; gap: 10px; flex-wrap: wrap; }
+    .row{ display:flex; gap:10px; flex-wrap:wrap; position:relative; z-index:1; }
     .btn{
+      display:inline-flex; align-items:center; gap:10px;
       padding: 11px 14px;
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.05);
-      display:inline-flex; gap:10px; align-items:center;
       font-weight: 600;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      transition: transform .18s ease, filter .18s ease, background .18s ease;
     }
-    .btn:hover{
-      transform: translateY(-2px);
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.22);
-    }
+    .btn:hover{ transform: translateY(-2px); background: rgba(255,255,255,.08); }
     .btn.primary{
       border: none;
-      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(0,209,255,.75));
-      box-shadow: 0 12px 30px rgba(124,92,255,.22);
+      background: linear-gradient(135deg, rgba(255,107,107,.95), rgba(45,226,230,.70));
+      box-shadow: 0 14px 34px rgba(255,107,107,.18);
     }
-    .btn.primary:hover{ filter: brightness(1.03); transform: translateY(-2px) scale(1.01); }
+    .btn.primary:hover{ filter: brightness(1.03); }
 
-    .meta{
-      margin-top: 18px;
-      display:flex; flex-wrap: wrap;
-      gap: 10px;
-      color: var(--muted2);
-      font-size: 13px;
-    }
-    .chip{
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-    }
+    .chips{ margin-top: 14px; color: var(--muted2); font-size: 13px; position:relative; z-index:1; display:flex; gap:10px; flex-wrap:wrap; }
+    .chip{ padding: 7px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.04); }
 
-    /* Side card */
-    .heroSide{ padding: 18px; display:flex; flex-direction: column; gap: 12px; }
-    .sideTop{
-      display:flex; align-items:center; justify-content:space-between; gap: 12px;
-    }
-    .avatar{
-      width: 54px; height: 54px; border-radius: 16px;
-      background: linear-gradient(135deg, rgba(124,92,255,.85), rgba(0,209,255,.55));
-      border: 1px solid rgba(255,255,255,.18);
-      position:relative;
-      overflow:hidden;
-      box-shadow: 0 16px 30px rgba(0,0,0,.35);
-    }
-    .avatar::after{
-      content:"";
-      position:absolute; inset:-20px;
-      background: radial-gradient(60px 60px at 30% 35%, rgba(255,255,255,.35), transparent 55%);
-      transform: rotate(12deg);
-      opacity:.9;
-    }
-    .sideTitle{
+    section{ margin-top: 22px; }
+    .title{
+      display:flex; align-items:center; gap: 10px;
       font-family: "Space Grotesk", Inter, sans-serif;
       font-weight: 700;
-      margin: 0;
-      letter-spacing: -0.2px;
-    }
-    .sideSub{
-      margin: 2px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.4;
-    }
-    .statGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 6px;
-    }
-    .stat{
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      padding: 12px;
-    }
-    .stat b{
-      display:block;
-      font-family: "Space Grotesk", Inter, sans-serif;
-      font-size: 16px;
-      letter-spacing: -0.2px;
-    }
-    .stat span{
-      color: var(--muted2);
-      font-size: 12px;
-    }
-
-    /* Sections */
-    section{ margin-top: 22px; }
-    .sectionTitle{
-      font-family: "Space Grotesk", Inter, sans-serif;
-      font-size: 18px;
-      letter-spacing: -0.2px;
+      letter-spacing: -.2px;
       margin: 0 0 12px;
-      color: rgba(234,240,255,.92);
-      display:flex; align-items:center; gap:10px;
     }
     .bar{
-      height: 10px;
-      width: 44px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      opacity: .9;
+      width: 46px; height: 10px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--b), var(--c));
     }
 
-    /* Project cards */
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 12px;
     }
-    .proj{
+    .item{
       grid-column: span 6;
       padding: 16px;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
     }
-    .proj:hover{
-      transform: translateY(-4px);
-      border-color: rgba(255,255,255,.20);
-      background: rgba(255,255,255,.06);
-    }
-    @media (max-width: 900px){ .proj{ grid-column: span 12; } }
+    .item:hover{ transform: translateY(-4px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.18); }
+    @media (max-width: 900px){ .item{ grid-column: span 12; } }
 
-    .projHead{
-      display:flex; align-items:flex-start; justify-content:space-between; gap: 10px;
-    }
-    .proj h3{
+    .item h3{
       margin:0;
       font-family: "Space Grotesk", Inter, sans-serif;
+      letter-spacing: -.2px;
       font-size: 18px;
-      letter-spacing: -0.2px;
     }
-    .tagRow{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px; }
-    .tag{
-      font-size: 12px;
-      padding: 6px 9px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-      color: var(--muted);
-    }
-    .proj p{
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 13.5px;
-      line-height: 1.55;
-    }
-    .proj ul{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 13.5px;
-      line-height: 1.55;
-    }
-    .proj .links{
-      margin-top: 12px;
-      display:flex; gap:10px; flex-wrap:wrap;
-      color: rgba(234,240,255,.86);
-      font-weight: 600;
-      font-size: 13px;
-    }
-    .tiny{
-      font-size: 12px;
-      color: var(--muted2);
-    }
+    .meta{ margin-top: 6px; color: var(--muted2); font-size: 12px; }
+    ul{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); line-height: 1.55; }
+    .tags{ margin-top: 10px; display:flex; gap:8px; flex-wrap:wrap; }
+    .tag{ font-size: 12px; padding: 6px 9px; border-radius: 999px; border:1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.04); color: var(--muted); }
 
-    /* Experience */
-    .timeline{ display:flex; flex-direction:column; gap: 10px; }
-    .role{
-      padding: 16px;
-    }
-    .roleTop{
-      display:flex; align-items:flex-start; justify-content:space-between; gap: 10px;
-    }
-    .role h3{
-      margin:0;
-      font-family: "Space Grotesk", Inter, sans-serif;
-      font-size: 16px;
-    }
-    .role .where{
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 3px;
-    }
-    .role .when{
-      color: var(--muted2);
-      font-size: 12px;
-      white-space: nowrap;
-      margin-top: 2px;
-    }
-    .role ul{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 13.5px;
-      line-height: 1.55;
-    }
+    .skills{ display:flex; flex-wrap:wrap; gap:10px; padding: 16px; }
+    .skill{ padding: 9px 11px; border-radius: 999px; border:1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.04); font-size: 13px; color: rgba(238,242,255,.85); }
 
-    /* Skills */
-    .skillwrap{ display:flex; flex-wrap:wrap; gap: 10px; }
-    .skill{
-      padding: 9px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      color: rgba(234,240,255,.85);
-      font-size: 13px;
-    }
-
-    /* Footer */
     footer{
       margin-top: 26px;
       color: var(--muted2);
       font-size: 12px;
       display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-      opacity: .95;
     }
-
-    /* Smooth entrance */
-    .reveal{ opacity:0; transform: translateY(10px); }
-    .reveal.on{ opacity:1; transform: translateY(0); transition: opacity .55s ease, transform .55s ease; }
   </style>
 </head>
 
 <body>
   <div class="nav">
-    <div class="brand">
-      <span class="dot"></span>
-      <span>Divyan Dhavale</span>
-    </div>
-    <div class="navlinks">
-      <a class="pill" href="#projects">Projects</a>
-      <a class="pill" href="#experience">Experience</a>
-      <a class="pill" href="#skills">Skills</a>
-      <a class="pill" href="#contact">Contact</a>
+    <div class="brand"><span class="dot"></span>Divyan Dhavale</div>
+    <div>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
     </div>
   </div>
 
   <main class="wrap">
-    <!-- HERO -->
-    <div class="hero">
-      <div class="card heroMain reveal">
-        <div class="kicker"><span class="spark"></span> Virginia Tech CS • Expected May 2026 • Building modern web + AI products</div>
-        <h1>Divyanshu (Divyan) Dhavale</h1>
-        <p class="subtitle">
-          Computer Science student at Virginia Tech with experience shipping full-stack apps and AI tooling.
-          I like building products that feel polished, ship fast, and actually get used.
-        </p>
+    <div class="card hero">
+      <h1>Divyanshu (Divyan) Dhavale</h1>
+      <p class="sub">
+        Virginia Tech Computer Science (May 2026). I build polished full-stack apps and AI automation tools—clean UI, real impact.
+      </p>
 
-        <div class="ctaRow">
-          <a class="btn primary" href="#projects">✨ See Projects</a>
-          <a class="btn" href="https://github.com/skdivyan177" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/divyandhavale/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="btn" href="mailto:sk.divyan177@gmail.com">Email</a>
-        </div>
-
-        <div class="meta">
-          <span class="chip">📍 Blacksburg, VA</span>
-          <span class="chip">📞 +1 (571) 519-3760</span>
-          <span class="chip">🏅 Dean’s List: Fall 2023</span>
-          <span class="chip">GPA: 3.2 Major</span>
-        </div>
+      <div class="row">
+        <a class="btn primary" href="#projects">See Projects</a>
+        <a class="btn" href="https://github.com/skdivyan177" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/divyandhavale/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn" href="mailto:sk.divyan177@gmail.com">Email</a>
       </div>
 
-      <div class="card heroSide reveal">
-        <div class="sideTop">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <div class="avatar" aria-hidden="true"></div>
-            <div>
-              <p class="sideTitle">Quick Facts</p>
-              <p class="sideSub">Full-stack • AI agents • Clean UI</p>
-            </div>
-          </div>
-          <span class="tiny">Updated: Dec 2025</span>
-        </div>
-
-        <div class="statGrid">
-          <div class="stat">
-            <b>MERN + React</b>
-            <span>Maps, feeds, dashboards</span>
-          </div>
-          <div class="stat">
-            <b>Python + LLMs</b>
-            <span>Automation & summaries</span>
-          </div>
-          <div class="stat">
-            <b>Cloud Basics</b>
-            <span>AWS / Azure / GCP</span>
-          </div>
-          <div class="stat">
-            <b>Teaching</b>
-            <span>CS2506 TA (VT)</span>
-          </div>
-        </div>
-
-        <div class="tagRow">
-          <span class="tag">React</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">Node.js</span>
-          <span class="tag">MongoDB</span>
-          <span class="tag">Python</span>
-          <span class="tag">LLMs</span>
-        </div>
+      <div class="chips">
+        <span class="chip">📍 Blacksburg, VA</span>
+        <span class="chip">🏅 Dean’s List: Fall 2023</span>
+        <span class="chip">GPA: 3.2 Major</span>
+        <span class="chip">+1 (571) 519-3760</span>
       </div>
     </div>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="reveal">
-      <div class="sectionTitle"><span class="bar"></span>Projects</div>
+    <section id="projects">
+      <h2 class="title"><span class="bar"></span>Projects</h2>
       <div class="grid">
-        <article class="card proj">
-          <div class="projHead">
-            <div>
-              <h3>Marriott Social Media Hub <span class="tiny">— Marriott CodeFest (Oct 2025)</span></h3>
-              <div class="tagRow">
-                <span class="tag">React + Vite</span><span class="tag">TypeScript</span><span class="tag">Tailwind</span><span class="tag">MongoDB</span>
-              </div>
-            </div>
+        <article class="card item">
+          <h3>Marriott Social Media Hub</h3>
+          <div class="meta">Marriott CodeFest • Oct 2025</div>
+          <div class="tags">
+            <span class="tag">React + Vite</span><span class="tag">TypeScript</span><span class="tag">Tailwind</span><span class="tag">MongoDB</span>
           </div>
           <ul>
-            <li>Built a responsive social media-style web app with interactive profiles, a card-based feed, and engagement metrics (likes/comments/follows).</li>
-            <li>Instagram-style UX turns hotel reviews into shareable travel moments to drive loyalty + repeat bookings.</li>
-            <li>Presented the product to Marriott stakeholders.</li>
+            <li>Built a social media-style web app with profiles, a card feed, and engagement metrics (likes/comments/follows).</li>
+            <li>Instagram-like UX turns reviews into shareable travel moments; presented to Marriott stakeholders.</li>
           </ul>
-          <div class="links">
-            <!-- Replace # with your real links when ready -->
-            <a class="btn" href="#" target="_blank" rel="noreferrer">Live Demo</a>
-            <a class="btn" href="#" target="_blank" rel="noreferrer">GitHub Repo</a>
+          <div class="row" style="margin-top:12px;">
+            <!-- Replace # with real links -->
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Repo</a>
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Demo</a>
           </div>
         </article>
 
-        <article class="card proj">
-          <div class="projHead">
-            <div>
-              <h3>Trekly — Hiking Safety + Social App <span class="tiny">— HCI Capstone (Dec 2025)</span></h3>
-              <div class="tagRow">
-                <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">Google Maps API</span>
-              </div>
-            </div>
+        <article class="card item">
+          <h3>Trekly — Hiking Safety + Social</h3>
+          <div class="meta">HCI Capstone • Dec 2025</div>
+          <div class="tags">
+            <span class="tag">React</span><span class="tag">Node/Express</span><span class="tag">MongoDB</span><span class="tag">Google Maps API</span>
           </div>
           <ul>
-            <li>Built a MERN hiking safety app combining official trail data with crowdsourced hazard reports.</li>
-            <li>Implemented hazard submission + storage + retrieval pipeline with a user-tested UI grounded in HCI methods.</li>
-            <li>Real-time map visualization + trail difficulty + community “what to expect” context.</li>
+            <li>MERN hiking safety app combining official trail data + crowdsourced hazard reports with live map visualization.</li>
+            <li>Built hazard submission/storage/retrieval pipeline + user-tested UI grounded in HCI methods.</li>
           </ul>
-          <div class="links">
-            <a class="btn" href="#" target="_blank" rel="noreferrer">Live Demo</a>
-            <a class="btn" href="#" target="_blank" rel="noreferrer">GitHub Repo</a>
+          <div class="row" style="margin-top:12px;">
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Repo</a>
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Demo</a>
           </div>
         </article>
 
-        <article class="card proj">
-          <div class="projHead">
-            <div>
-              <h3>GameMatch — Game Recommendation System <span class="tiny">(May 2025)</span></h3>
-              <div class="tagRow">
-                <span class="tag">React + Vite</span><span class="tag">TypeScript</span><span class="tag">Tailwind</span>
-              </div>
-            </div>
+        <article class="card item">
+          <h3>GameMatch — Game Recommender</h3>
+          <div class="meta">May 2025</div>
+          <div class="tags">
+            <span class="tag">React + Vite</span><span class="tag">TypeScript</span><span class="tag">Tailwind</span>
           </div>
           <ul>
-            <li>Built an interactive recommendation app that matches users to games based on genre + preference selections.</li>
-            <li>Guided multi-step flow with a clean, responsive UI and intuitive navigation.</li>
+            <li>Interactive multi-step UI that matches users to games based on selected genres + preferences.</li>
+            <li>Designed a clean, responsive flow emphasizing user-centered navigation.</li>
           </ul>
-          <div class="links">
-            <a class="btn" href="#" target="_blank" rel="noreferrer">Live Demo</a>
-            <a class="btn" href="#" target="_blank" rel="noreferrer">GitHub Repo</a>
+          <div class="row" style="margin-top:12px;">
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Repo</a>
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Demo</a>
           </div>
         </article>
 
-        <article class="card proj">
-          <div class="projHead">
-            <div>
-              <h3>DailyStockValues — Top Active Stocks Dashboard <span class="tiny">(Jul 2025)</span></h3>
-              <div class="tagRow">
-                <span class="tag">Python</span><span class="tag">Selenium</span><span class="tag">Tkinter</span><span class="tag">Web Scraping</span>
-              </div>
-            </div>
+        <article class="card item">
+          <h3>DailyStockValues — Active Stocks Dashboard</h3>
+          <div class="meta">Jul 2025</div>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Selenium</span><span class="tag">Tkinter</span><span class="tag">Scraping</span>
           </div>
           <ul>
-            <li>Built a Python desktop app that scrapes and displays top 5 most active stocks in real time via a Tkinter GUI.</li>
-            <li>Automated extraction from Yahoo Finance market tables with refreshable UI components.</li>
+            <li>Desktop app scraping top 5 most active stocks in real time and rendering results in a refreshable GUI.</li>
+            <li>Automated table parsing from Yahoo Finance and displayed structured outputs.</li>
           </ul>
-          <div class="links">
-            <a class="btn" href="#" target="_blank" rel="noreferrer">GitHub Repo</a>
+          <div class="row" style="margin-top:12px;">
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Repo</a>
           </div>
         </article>
       </div>
+    </section>
 
-      <p class="tiny" style="margin-top:10px;color:rgba(234,240,255,.55);">
-        Tip: replace the “Live Demo” and “GitHub Repo” # links with your actual URLs when you’re ready.
+    <section id="experience">
+      <h2 class="title"><span class="bar"></span>Experience</h2>
+      <div class="grid">
+        <article class="card item" style="grid-column: span 12;">
+          <h3>Software Engineering Intern — BetterBrain.AI (Remote)</h3>
+          <div class="meta">Sep 2025 – Nov 2025 • LLMs • Python • OCR</div>
+          <ul>
+            <li>Built a private-equity one-pager generator using LLMs + Python OCR to turn raw inputs into investor-ready summaries.</li>
+            <li>Collaborated directly with CEO to translate ambiguous agent requirements into concrete implementations.</li>
+          </ul>
+        </article>
+
+        <article class="card item">
+          <h3>Undergraduate Teaching Assistant — VT (CS 2506)</h3>
+          <div class="meta">Jan 2025 – May 2025</div>
+          <ul>
+            <li>Supported students in system-level programming concepts and held weekly office hours.</li>
+          </ul>
+        </article>
+
+        <article class="card item">
+          <h3>Vice President — Page-by-Page Book Club (VT)</h3>
+          <div class="meta">Aug 2025 – Present</div>
+          <ul>
+            <li>Social media + announcements (Discord/Instagram), helps plan monthly books and meetings.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="title"><span class="bar"></span>Skills</h2>
+      <div class="card skills">
+        <span class="skill">Java</span><span class="skill">Python</span><span class="skill">C/C++</span><span class="skill">SQL</span><span class="skill">JavaScript</span><span class="skill">Kotlin</span>
+        <span class="skill">React</span><span class="skill">Next.js</span><span class="skill">Node.js</span><span class="skill">MongoDB</span><span class="skill">Docker</span><span class="skill">Git/GitHub</span>
+        <span class="skill">AWS</span><span class="skill">Azure</span><span class="skill">GCP</span><span class="skill">NumPy/Pandas</span>
+      </div>
+      <p style="margin:10px 2px 0;color:var(--muted2);font-size:12px;">
+        Certifications: AWS Cloud Practitioner (course completion) • Microsoft Foundry Agent Service
       </p>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="reveal">
-      <div class="sectionTitle"><span class="bar"></span>Experience</div>
-      <div class="timeline">
-        <div class="card role">
-          <div class="roleTop">
-            <div>
-              <h3>Software Engineering Intern — BetterBrain.AI (Remote)</h3>
-              <div class="where">LLMs • Python • OCR • Product collaboration</div>
-            </div>
-            <div class="when">Sep 2025 – Nov 2025</div>
-          </div>
-          <ul>
-            <li>Built a private-equity one-pager generator using LLMs + Python OCR to transform raw company inputs into investor-ready summaries.</li>
-            <li>Partnered with the CEO to refine scope and convert ambiguous agent requirements into concrete implementations.</li>
-            <li>Worked async across tasks, reviewed progress, and iterated based on stakeholder feedback.</li>
-          </ul>
-        </div>
-
-        <div class="card role">
-          <div class="roleTop">
-            <div>
-              <h3>Undergraduate Teaching Assistant — Virginia Tech (CS 2506)</h3>
-              <div class="where">Systems programming • Office hours • Student support</div>
-            </div>
-            <div class="when">Jan 2025 – May 2025</div>
-          </div>
-          <ul>
-            <li>Supported students learning computer organization + system-level programming concepts.</li>
-            <li>Held weekly office hours to guide students through assignments and debugging.</li>
-          </ul>
-        </div>
-
-        <div class="card role">
-          <div class="roleTop">
-            <div>
-              <h3>Vice President — Page-by-Page College Book Club (Virginia Tech)</h3>
-              <div class="where">Social media • Community building • Leadership</div>
-            </div>
-            <div class="when">Aug 2025 – Present</div>
-          </div>
-          <ul>
-            <li>Manage Discord announcements + create Instagram posts to grow participation.</li>
-            <li>Help choose monthly books and occasionally lead meetings.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="reveal">
-      <div class="sectionTitle"><span class="bar"></span>Skills</div>
-
-      <div class="card" style="padding:16px;">
-        <div class="skillwrap" style="margin-bottom:10px;">
-          <span class="skill">Java</span><span class="skill">Python</span><span class="skill">C</span><span class="skill">C++</span>
-          <span class="skill">SQL</span><span class="skill">JavaScript</span><span class="skill">Kotlin</span><span class="skill">HTML/CSS</span>
-          <span class="skill">Assembly</span><span class="skill">MATLAB</span>
-        </div>
-
-        <div class="skillwrap" style="margin-bottom:10px;">
-          <span class="skill">React</span><span class="skill">Next.js</span><span class="skill">Node.js</span><span class="skill">REST APIs</span>
-          <span class="skill">MongoDB</span><span class="skill">PostgreSQL</span><span class="skill">MySQL</span><span class="skill">Firebase</span>
-          <span class="skill">Docker</span><span class="skill">Git/GitHub</span><span class="skill">Figma</span>
-        </div>
-
-        <div class="skillwrap">
-          <span class="skill">NumPy</span><span class="skill">Pandas</span><span class="skill">Scikit-Learn</span><span class="skill">Matplotlib</span>
-          <span class="skill">AWS (IAM/EC2/S3/Lambda)</span><span class="skill">Azure</span><span class="skill">GCP</span>
-          <span class="skill">Python OCR</span><span class="skill">Databricks</span><span class="skill">Minitab</span>
-        </div>
-
-        <p class="tiny" style="margin-top:12px;">
-          Certifications: AWS Certified Cloud Practitioner (course completion) • Microsoft Foundry Agent Service
-        </p>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="reveal">
-      <div class="sectionTitle"><span class="bar"></span>Contact</div>
+    <section id="contact">
+      <h2 class="title"><span class="bar"></span>Contact</h2>
       <div class="card" style="padding:16px;">
         <p style="margin:0;color:var(--muted);line-height:1.6;">
-          Want to chat about an internship, a project, or just cool tech? Reach out:
+          Best way to reach me: <a href="mailto:sk.divyan177@gmail.com" style="text-decoration:underline;">sk.divyan177@gmail.com</a>
         </p>
-        <div class="ctaRow" style="margin-top:12px;">
-          <a class="btn primary" href="mailto:sk.divyan177@gmail.com">Email Me</a>
+        <div class="row" style="margin-top:12px;">
+          <a class="btn primary" href="mailto:sk.divyan177@gmail.com">Email</a>
           <a class="btn" href="https://www.linkedin.com/in/divyandhavale/" target="_blank" rel="noreferrer">LinkedIn</a>
           <a class="btn" href="https://github.com/skdivyan177" target="_blank" rel="noreferrer">GitHub</a>
         </div>
@@ -652,24 +337,11 @@
     </section>
 
     <footer>
-      <span>© <span id="year"></span> Divyanshu (Divyan) Dhavale</span>
-      <span class="tiny">Built with GitHub Pages • HTML/CSS • good vibes</span>
+      <span>© <span id="y"></span> Divyanshu Dhavale</span>
+      <span>Built on GitHub Pages</span>
     </footer>
   </main>
 
-  <script>
-    // year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Reveal on scroll
-    const els = document.querySelectorAll(".reveal");
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add("on");
-      });
-    }, { threshold: 0.12 });
-
-    els.forEach(el => io.observe(el));
-  </script>
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
 </body>
 </html>
